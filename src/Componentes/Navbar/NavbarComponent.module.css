@@ -1,0 +1,35 @@
+
+
+.navbar_custom {
+  background-color: #ffffff; 
+  padding: 0.8rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  box-shadow: 0 2px 6px rgba(75, 70, 70, 0.3);
+}
+
+.navbar_custom .navbar_brand {
+  color: #B88156; 
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.navbar_custom .navbar_brand:hover {
+  color: #FDBDCD; 
+  text-decoration: none;
+}
+
+.navbar_custom .nav_link {
+  color: #B88156;
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar_custom .nav_link:hover {
+  color: #FDBDCD;
+  text-decoration: none;
+}
+

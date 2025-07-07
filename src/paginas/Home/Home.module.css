@@ -1,0 +1,197 @@
+.topSection {
+  background-color: #fffbe6;
+  padding: 60px 0;
+}
+
+.title {
+  color: #b9815d;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.feature h4 {
+  color: #b9815d;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.feature p {
+  color: #3d3d3d;
+  margin-top: 10px;
+}
+
+.icon {
+  font-size: 50px;
+  color: #f8c2cd;
+}
+
+.bottomSection {
+  background: linear-gradient(90deg, #c9946b, #e49d8b, #f5b0b8);
+  padding: 50px 0;
+  color: #ffffff;
+}
+
+.bottomSection h3 {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.bottomSection p {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.botaoAgendar {
+  background-color: #fff6f0;
+  color: #b9815d;
+  font-weight: bold;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.botaoAgendar:hover {
+  background-color: #fce4d6;
+  color: #a56b4d;
+}
+
+.hero {
+  background-color: #faebdd;
+  padding: 80px 0;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #a26a3d;
+}
+
+.highlight {
+  color: #f6aabc;
+}
+
+.subtitle {
+  color: #3d3d3d;
+  font-size: 18px;
+  max-width: 650px;
+  margin: 20px auto 40px;
+}
+
+.botoess {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.botaoprimarioo {
+  background-color: #b9815d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+}
+
+.botaoprimarioo:hover {
+  background-color: #a46b4c;
+}
+
+.botaosecundario {
+  color: #b9815d;
+  font-weight: bold;
+  border: 1px solid #b9815d;
+  padding: 10px 24px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+.botaosecundario:hover {
+  background-color: #fcefe7;
+  color: #a46b4c;
+  border-color: #a46b4c;
+}
+
+.servicosSection {
+  background-color: #fff;
+  padding: 60px 0;
+}
+
+.title {
+  text-align: center;
+  color: #a26a3d;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-align: center;
+  color: #444;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.card {
+  background-color: #fffdfd;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.destacado {
+  border: 2px solid #c48e6e;
+}
+
+.tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c48e6e;
+  color: white;
+  padding: 4px 12px;
+  font-size: 14px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.card h3 {
+  color: #a26a3d;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  color: #f7a5bb;
+}
+
+.agendarBtn {
+  background-color: #f7a5bb;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+ transition: background 0.3s;
+}
+.agendarBtn:hover {
+  background-color: #eda3b5;
+}

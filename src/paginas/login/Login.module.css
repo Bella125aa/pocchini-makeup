@@ -1,0 +1,78 @@
+.login_page {
+  background: #fffbe6;
+}
+
+.icon_top {
+  color: #c68a53;
+}
+
+.welcome_title {
+  color: #a86d3f;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login_card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.login_title {
+  color: #a86d3f;
+  font-weight: bold;
+}
+
+.login_subtitle {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.custom_button {
+  background-color: #b98050;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.custom_button:hover {
+  background-color: #a76d44;
+}
+
+.forgot_link {
+  font-size: 0.9rem;
+  color: #c68a53;
+  text-decoration: none;
+}
+
+.forgot_link:hover {
+  text-decoration: underline;
+}
+
+.register_link {
+  color: #fa8fa5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register_link:hover {
+  text-decoration: underline;
+}
+
+.eye_icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #504f4f;
+  cursor: pointer;
+}

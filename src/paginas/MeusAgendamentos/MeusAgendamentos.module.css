@@ -1,0 +1,85 @@
+.container {
+  background-color: #fffced;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  color: #a86a3d;
+  font-weight: bold;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cardTitulo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #a86a3d;
+  margin-bottom: 0;
+}
+
+.cardSubtitulo {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.tabela {
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.icone {
+  color: #f199b1;
+  margin-right: 6px;
+}
+
+.servico {
+  font-weight: bold;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status.cancelado {
+  background-color: #f0baba;
+  color: #b33434;
+}
+
+.status.pendente {
+  background-color: #fdf3c0;
+  color: #b38f00;
+}
+
+.status.concluído {
+  background-color: #b8face;
+  color: #0ba550;
+}
+
+.botaoVer {
+  font-size: 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

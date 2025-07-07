@@ -1,0 +1,82 @@
+.agendamentoSection {
+  background-color: #fffdf5;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.tituloPrincipal {
+  color: #a86a3d;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.cardFormulario {
+  padding: 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.cardTitulo {
+  font-size: 1.4rem;
+  color: #a86a3d;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cardSubtitulo {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.botaoAgendarr {
+  width: 100%;
+  background-color: #c68b60;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.botaoAgendarr:hover {
+  background-color: #a86a3d;
+}
+
+.cardServicos {
+  margin-top: 20px;
+  background-color: #fffced;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.cardTituloLateral {
+  font-size: 1.2rem;
+  color: #a86a3d;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.servicoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid #f0e6dc;
+}
+
+.servicoItem:last-child {
+  border-bottom: none;
+}
