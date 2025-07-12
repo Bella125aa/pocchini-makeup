@@ -65,12 +65,12 @@
   color: #b33434;
 }
 
-.status.pendente {
+.status.marcado {
   background-color: #fdf3c0;
   color: #b38f00;
 }
 
-.status.concluído {
+.status.concluido {
   background-color: #b8face;
   color: #0ba550;
 }

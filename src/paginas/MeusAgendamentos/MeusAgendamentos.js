@@ -1,48 +1,47 @@
-import React, { useState } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Table, Button, Form } from 'react-bootstrap';
 import {
   BsCalendarHeart, BsClock, BsEye, BsPinMap, BsTelephone, BsEnvelope
 } from 'react-icons/bs';
 import Styles from './MeusAgendamentos.module.css';
+import AgendamentoAPI from '../../services/AgendamentoAPI.js';
 
-const agendamentos = [
-  {
-    data: '14/01/2024',
-    horario: '14:00',
-    servico: 'Maquiagem de Noiva',
-    valor: 'R$ 250',
-    status: 'Cancelado',
-    local: 'Rua das Flores, 123 - Centro',
-    observacoes: 'Maquiagem para casamento, estilo clássico',
-    telefone: '(11) 99999-9999',
-    email: 'maria@email.com'
-  },
-  {
-    data: '19/01/2024',
-    horario: '16:00',
-    servico: 'Maquiagem Formal',
-    valor: 'R$ 120',
-    status: 'Pendente',
-    local: 'Av. Principal, 456 - Centro',
-    observacoes: 'Formatura à noite, estilo elegante',
-    telefone: '(11) 98888-8888',
-    email: 'joana@email.com'
-  },
-  {
-    data: '11/01/2024',
-    horario: '10:00',
-    servico: 'Maquiagem Casual',
-    valor: 'R$ 80',
-    status: 'Concluído',
-    local: 'Rua B, 789 - Bairro X',
-    observacoes: 'Look leve para reunião de trabalho',
-    telefone: '(11) 97777-7777',
-    email: 'ana@email.com'
-  },
-];
+export function MeusAgendamentos() {
 
-function MeusAgendamentos() {
   const [selecionado, setSelecionado] = useState(null);
+  const [statusSelecionado, setStatusSelecionado] = useState("");
+  const [agendamentos, setAgendamentos] = useState([]);
+
+
+  const statusAgendamento = {
+    "Marcado": 0,
+    "Cancelado": 1,
+    "Concluído": 2,
+  };
+
+  async function carregarAgendamentos(statusCodigo) {
+    try {
+      const listaAgendamentos = await AgendamentoAPI.listarPorStatusAsync(statusCodigo)
+
+      const listaConvertida = listaAgendamentos.map(item => ({
+        ...item,
+        dataHora: new Date(item.dataHora)
+      }));
+
+      setAgendamentos(listaConvertida);
+    } catch (error) {
+      console.error("Erro ao carregar agendamentos:", error);
+    }
+
+  }
+
+  useEffect(() => {
+    const executar = async () => {
+      await carregarAgendamentos(statusSelecionado);
+    };
+
+    executar();
+  }, [statusSelecionado]);
 
   return (
     <div className={Styles.container}>
@@ -53,13 +52,24 @@ function MeusAgendamentos() {
         <h4 className={Styles.cardTitulo}>Agendamentos</h4>
         <p className={Styles.cardSubtitulo}>Lista dos seus agendamentos de maquiagem</p>
 
+        <Form.Select
+          className="mb-3"
+          value={statusSelecionado}
+          onChange={(e) => setStatusSelecionado(e.target.value)}
+        >
+          {Object.entries(statusAgendamento).map(([nome, valor]) => (
+            <option key={valor} value={valor}>{nome}</option>
+          ))}
+        </Form.Select>
+
+
         <Table responsive borderless hover className={Styles.tabela}>
           <thead>
             <tr>
+              <th>Nome</th>
               <th>Data</th>
               <th>Horário</th>
               <th>Serviço</th>
-              <th>Valor</th>
               <th>Status</th>
               <th>Ações</th>
             </tr>
@@ -67,10 +77,10 @@ function MeusAgendamentos() {
           <tbody>
             {agendamentos.map((item, index) => (
               <tr key={index}>
-                <td><BsCalendarHeart className={Styles.icone} /> {item.data}</td>
-                <td><BsClock className={Styles.icone} /> {item.horario}</td>
-                <td className={Styles.servico}>{item.servico}</td>
-                <td>{item.valor}</td>
+                <td>{item.nome}</td>
+                <td><BsCalendarHeart className={Styles.icone} /> {item.dataHora.toLocaleDateString()}</td>
+                <td><BsClock className={Styles.icone} /> {item.dataHora.toLocaleTimeString()}</td>
+                <td className={Styles.servico}>{item.tipoMaquiagem}</td>
                 <td>
                   <span className={`${Styles.status} ${Styles[item.status.toLowerCase()]}`}>
                     {item.status}
@@ -97,14 +107,13 @@ function MeusAgendamentos() {
 
           <div className={Styles.linha}>
             <strong>Serviço</strong>
-            <p>{selecionado.servico}</p>
-            <p className={Styles.valor}>{selecionado.valor}</p>
+            <p>{selecionado.tipoMaquiagem}</p>
           </div>
 
           <div className={Styles.linha}>
             <strong>Data e Horário</strong>
-            <p><BsCalendarHeart className={Styles.icone} /> {selecionado.data}</p>
-            <p><BsClock className={Styles.icone} /> {selecionado.horario}</p>
+            <p><BsCalendarHeart className={Styles.icone} /> {selecionado.dataHora.toLocaleDateString()}</p>
+            <p><BsClock className={Styles.icone} /> {selecionado.dataHora.toLocaleTimeString()}</p>
           </div>
 
           <div className={Styles.linha}>
@@ -121,10 +130,11 @@ function MeusAgendamentos() {
 
           <div className={Styles.linha}>
             <strong>Observações</strong>
-            <p>{selecionado.observacoes}</p>
+            <p>{selecionado.observacao}</p>
           </div>
 
           <hr />
+          
 
           <div className={Styles.linha}>
             <strong>Contato</strong>
