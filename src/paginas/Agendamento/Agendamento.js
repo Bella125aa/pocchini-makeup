@@ -67,6 +67,38 @@ export function Agendamento() {
     return todos.filter(h => !ocupados.includes(h));
   }
 
+  async function confirmarAgendamento() {
+    if (
+      !nome || !telefone || !tipoMaquiagem || !dataSelecionada || !horario
+    ) {
+      alert("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    const [hora, minuto] = horario.split(":");
+    const dataHora = new Date(dataSelecionada);
+    dataHora.setHours(hora);
+    dataHora.setMinutes(minuto);
+
+
+    try {
+      await AgendamentoAPI.criarAsync(dataHora.toISOString(), nome, email, telefone, tipoMaquiagem, local);
+      alert("Agendamento realizado com sucesso!");
+
+      setNome("");
+      setTelefone("");
+      setEmail("");
+      setTipoMaquiagem("");
+      setDataSelecionada("");
+      setHorario("");
+      setLocal("");
+    } catch (error) {
+      console.error("Erro ao criar agendamento:", error);
+      alert("Erro ao agendar. Verifique os dados e tente novamente.");
+    }
+  }
+
+
   return (
     <div className={Styles.agendamentoSection}>
       <h2 className={Styles.tituloPrincipal}>Agendar Maquiagem</h2>
@@ -83,25 +115,37 @@ export function Agendamento() {
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Nome Completo *</Form.Label>
-                        <Form.Control type="text" placeholder="Seu nome completo" required />
+                        <Form.Control type="text" placeholder="Seu nome completo"
+                          value={nome}
+                          onChange={(e) => setNome(e.target.value)}
+                          required />
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Telefone/WhatsApp *</Form.Label>
-                        <Form.Control type="text" placeholder="(11) 99999-9999" required />
+                        <Form.Control type="text" placeholder="(11) 99999-9999"
+                          value={telefone}
+                          onChange={(e) => setTelefone(e.target.value)}
+                          required />
                       </Form.Group>
                     </Col>
                   </Row>
 
                   <Form.Group className="mb-3">
                     <Form.Label>E-mail</Form.Label>
-                    <Form.Control type="email" placeholder="seu.email@exemplo.com" />
+                    <Form.Control type="email" placeholder="seu.email@exemplo.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required />
                   </Form.Group>
 
                   <Form.Group className="mb-3">
                     <Form.Label>Tipo de Maquiagem *</Form.Label>
-                    <Form.Select required>
+                    <Form.Select
+                      value={tipoMaquiagem}
+                      onChange={(e) => setTipoMaquiagem(e.target.value)}
+                      required>
                       <option>Selecione o tipo de maquiagem</option>
                       <option>Casual</option>
                       <option>Formal</option>
@@ -140,7 +184,9 @@ export function Agendamento() {
                     <Form.Control type="text" placeholder="Endereço onde será realizada a maquiagem" />
                   </Form.Group>
 
-                  <Button className={Styles.botaoAgendarr}>Confirmar Agendamento</Button>
+                  <Button className={Styles.botaoAgendarr} onClick={confirmarAgendamento}>
+                    Confirmar Agendamento
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>
@@ -160,7 +206,7 @@ export function Agendamento() {
               <Card.Body>
                 <Card.Title className={Styles.cardTituloLateral}>Informações</Card.Title>
                 <p><strong>Horário de Funcionamento</strong><br />
-                  Segunda a Sábado: 8h às 18h</p>
+                  Segunda a Domingo: 8h às 18h</p>
               </Card.Body>
             </Card>
           </Col>

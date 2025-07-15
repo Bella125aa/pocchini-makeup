@@ -2,12 +2,12 @@ import { HTTPClient } from "./client";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    async criarAsync(dataHora, nome, observacao, telefone, tipoMaquiagem, local) {
+    async criarAsync(dataHora, nome, email, telefone, tipoMaquiagem, local) {
         try {
             const agendamentoCriar = {
                 dataHora: dataHora,
                 nome: nome,
-                observacao: observacao,
+                email: email,
                 telefone: telefone,
                 tipoMaquiagem: tipoMaquiagem,
                 local: local,

@@ -128,10 +128,6 @@ export function MeusAgendamentos() {
             </span>
           </div>
 
-          <div className={Styles.linha}>
-            <strong>Observações</strong>
-            <p>{selecionado.observacao}</p>
-          </div>
 
           <hr />
           
