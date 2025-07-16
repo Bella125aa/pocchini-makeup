@@ -156,7 +156,7 @@ function SobreJuliana() {
                 <Container className="text-center">
                     <h3>Vamos Conversar?</h3>
                     <p>Estou aqui para tornar seus momentos especiais ainda mais memoráveis. Entre em contato e vamos juntas te deixar ainda mais maravilhosa</p>
-                    <Button className={styles.botaoAgendar} as={Link} to="/agendamento">Agendar Minha Maquiagem</Button>
+                    <Button className={styles.botaoAgendarr} as={Link} to="/agendamento">Agendar Minha Maquiagem</Button>
                 </Container>
             </section>
 

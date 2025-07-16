@@ -186,7 +186,7 @@
   margin: 15px 0;
 }
 
-.botaoAgendar {
+.botaoAgendarr {
   background-color: #fff6f0;
   color: #b9815d;
   font-weight: bold;
@@ -196,7 +196,7 @@
   transition: all 0.3s ease;
 }
 
-.botaoAgendar:hover {
+.botaoAgendarr:hover {
   background-color: #fce4d6;
   color: #a56b4d;
 }
