@@ -40,7 +40,8 @@ export function Agendamento() {
   function extrairDiasIndisponiveis(lista) {
     const horariosPorDia = {};
     lista.forEach(ag => {
-      const data = new Date(ag.dataHora).toISOString().split('T')[0];
+      const dataObj = new Date(ag.dataHora);
+      const data = formatarDataLocalFromUTCString(dataObj);
       const hora = new Date(ag.dataHora).toTimeString().slice(0, 5);
 
       if (!horariosPorDia[data]) horariosPorDia[data] = new Set();
@@ -57,10 +58,20 @@ export function Agendamento() {
     return indisponiveis;
   }
 
+  function formatarDataLocalFromUTCString(dateStringUTC) {
+    const utcDate = new Date(dateStringUTC);
+    const localDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000)
+    const ano = localDate.getFullYear();
+    const mes = String(localDate.getMonth() + 1).padStart(2, '0');
+    const dia = String(localDate.getDate()).padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
+  } 
+
   function obterHorariosDisponiveisParaData(lista, dataSelecionada) {
-    const dataISO = new Date(dataSelecionada).toISOString().split('T')[0];
+    const dataISO = formatarDataLocalFromUTCString(new Date(dataSelecionada));
+
     const ocupados = lista
-      .filter(ag => new Date(ag.dataHora).toISOString().split('T')[0] === dataISO)
+      .filter(ag => formatarDataLocalFromUTCString(new Date(ag.dataHora)) === dataISO)
       .map(ag => new Date(ag.dataHora).toTimeString().slice(0, 5));
 
     const todos = ["08:00", "10:00", "14:00", "16:00"];
@@ -75,15 +86,23 @@ export function Agendamento() {
       return;
     }
 
-    const [hora, minuto] = horario.split(":");
-    const dataHora = new Date(dataSelecionada);
-    dataHora.setHours(hora);
-    dataHora.setMinutes(minuto);
+    const [hora, minuto] = horario.split(":").map(Number);
+
+    const dataLocal = new Date(
+      dataSelecionada.getFullYear(),
+      dataSelecionada.getMonth(),
+      dataSelecionada.getDate(),
+      hora,
+      minuto
+    );
+
+    const isoStringComTimezoneCorreto = new Date(dataLocal.getTime() - (dataLocal.getTimezoneOffset() * 60000)).toISOString();
 
 
     try {
-      await AgendamentoAPI.criarAsync(dataHora.toISOString(), nome, email, telefone, tipoMaquiagem, local);
+      await AgendamentoAPI.criarAsync(isoStringComTimezoneCorreto, nome, email, telefone, tipoMaquiagem, local);
       alert("Agendamento realizado com sucesso!");
+      window.location.reload();
 
       setNome("");
       setTelefone("");
@@ -95,6 +114,7 @@ export function Agendamento() {
     } catch (error) {
       console.error("Erro ao criar agendamento:", error);
       alert("Erro ao agendar. Verifique os dados e tente novamente.");
+
     }
   }
 
@@ -160,7 +180,7 @@ export function Agendamento() {
                         <DatePicker
                           selected={dataSelecionada}
                           onChange={(date) => setDataSelecionada(date)}
-                          excludeDates={diasIndisponiveis.map(d => new Date(d))}
+                          excludeDates={diasIndisponiveis.map(d => new Date(d + "T00:00:00"))}
                           dateFormat={"dd/MM/yyyy"}
                           className="form-control"
                         />
