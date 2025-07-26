@@ -3,39 +3,69 @@ import { BsBoxArrowInRight, BsEye } from 'react-icons/bs';
 import Styles from './Cadastro.module.css';
 import { Link } from 'react-router-dom';
 import { RiUserHeartLine } from "react-icons/ri";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import UsuarioAPI from "../../services/UsuarioAPI"
+
 function Cadastro() {
+
+const [nome, setNome] = useState("");
+const [email, setEmail] = useState("");
+const [senha, setSenha] = useState("");
+const navigate = useNavigate();
+
+async function handleCadastro(e){
+  e.preventDefault();
+
+  if(!nome || !email || !senha) {
+    alert("Preencha todos os campos.");
+    return;
+  }
+
+  try{
+    await UsuarioAPI.criarAsync(nome,email,senha);
+    alert("Cadastro realizado com sucesso!");
+    navigate("/login");
+  }catch(erro){
+    console.error(erro);
+    alert("Erro ao cadastrar, Verifique os dadaos.")
+  }
+}
+
+
   return (
     <div className={Styles.cadrastro_page}>
       <Container className="d-flex flex-column align-items-center justify-content-center vh-100">
         <RiUserHeartLine size={45} className={`mb-3 ${Styles.icon_top}`} />
         <h2 className={`text-center ${Styles.welcome_title}`}>Bem-vinda</h2>
-        <p className={`text-center ${Styles.subtitle}`}>Crie uma para agendar seus serviços</p>
+        <p className={`text-center ${Styles.subtitle}`}>Crie uma conta para agendar seus serviços</p>
 
         <Card className={`p-4 mt-3 ${Styles.cadastro_card}`}>
           <h3 className={`text-center ${Styles.cadastro_title}`}>Cadastro</h3>
           <p className={`text-center ${Styles.cadastro_subtitle}`}>Digite suas credenciais para criar sua conta</p>
 
-          <Form>
+          <Form onSubmit={handleCadastro}>
+              <Form.Group className="mb-3" controlId="formNome">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control type="Nome" placeholder="Nome Completo" value={nome} onChange = {(n) => setNome(n.target.value)}/>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>E-mail</Form.Label>
-              <Form.Control type="email" placeholder="seu@email.com" />
+              <Form.Control type="email" placeholder="seu@email.com" value={email} onChange ={(e) => setEmail(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formSenha">
               <Form.Label>Senha</Form.Label>
               <div className="position-relative">
-                <Form.Control type="password" />
+                <Form.Control type="password" value={senha} onChange= {(s) => setSenha(s.target.value)} />
                 <BsEye className={Styles.eye_icon} />
               </div>
             </Form.Group>
 
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <Form.Check type="checkbox" label="Lembrar de mim" />
-            </div>
-
-            <Button type="submit" className={`w-100 ${Styles.custom_button}`} as={Link} to="/home">
+            <Button type="submit" className={`w-100 ${Styles.custom_button}`}>
               <BsBoxArrowInRight className="me-2" />
-              Entrar
+              Cadastrar
             </Button>
 
             <hr />

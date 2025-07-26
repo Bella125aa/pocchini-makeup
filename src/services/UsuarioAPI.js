@@ -39,15 +39,31 @@ export default {
         }
     },
 
+    async logarAsync(email, senha)
+    {
+        try{
+            const usuarioLogar = {
+                email: email,
+                senha: senha,
+            };
+            console.log("req", usuarioLogar);
+            const response = await HTTPClient.post("/Usuario/Login", usuarioLogar)
+            console.log("response", response.data);
+            return response.data;
+        }catch (error) {
+            console.error("Erro ao autenticar usuario", error);
+            throw error;
+        }
+    },
+
     async atualizarAsync(usuarioId, nome, email) {
         try {
             const usuarioAtualizar = {
                 usuarioId: usuarioId,
                 nome: nome,
                 email: email,
-                senha: senha,
             };
-            const response = await HTTPClient.put(`/Usuario/Atualizar/${categoriaId} , usuarioAtualizar`)
+            const response = await HTTPClient.put("/Usuario/Atualizar", usuarioAtualizar)
             return response.data;
         } catch (error) {
             console.error("Error ao atualizar usuario:", error);

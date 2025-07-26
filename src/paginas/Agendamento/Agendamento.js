@@ -16,7 +16,6 @@ export function Agendamento() {
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
   const [tipoMaquiagem, setTipoMaquiagem] = useState("");
-  const [data, setData] = useState("");
   const [horario, setHorario] = useState("");
   const [local, setLocal] = useState("");
 

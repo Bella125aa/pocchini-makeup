@@ -5,13 +5,13 @@ import {
 } from 'react-icons/bs';
 import Styles from './MeusAgendamentos.module.css';
 import AgendamentoAPI from '../../services/AgendamentoAPI.js';
+import { useAuth } from '../../Componentes/Contexts/AuthContext.js';
 
 export function MeusAgendamentos() {
-
+  const {usuario} = useAuth();
   const [selecionado, setSelecionado] = useState(null);
   const [statusSelecionado, setStatusSelecionado] = useState("");
   const [agendamentos, setAgendamentos] = useState([]);
-
 
   const statusAgendamento = {
     "Marcado": 0,
@@ -20,8 +20,16 @@ export function MeusAgendamentos() {
   };
 
   async function carregarAgendamentos(statusCodigo) {
+    if (!usuario) return;
+
     try {
-      const listaAgendamentos = await AgendamentoAPI.listarPorStatusAsync(statusCodigo)
+      let listaAgendamentos = [];
+
+      if (usuario.isAdmin) {
+        listaAgendamentos = await AgendamentoAPI.listarPorStatusAsync(statusCodigo);
+      } else {
+        listaAgendamentos = await AgendamentoAPI.listarPorUsuarioEStatusAsync(usuario.id, statusCodigo);
+      }
 
       const listaConvertida = listaAgendamentos.map(item => ({
         ...item,
@@ -37,11 +45,13 @@ export function MeusAgendamentos() {
 
   useEffect(() => {
     const executar = async () => {
-      await carregarAgendamentos(statusSelecionado);
+      if (usuario) {
+        await carregarAgendamentos(statusSelecionado);
+      }
     };
 
     executar();
-  }, [statusSelecionado]);
+  }, [statusSelecionado, usuario]);
 
   return (
     <div className={Styles.container}>
@@ -130,7 +140,7 @@ export function MeusAgendamentos() {
 
 
           <hr />
-          
+
 
           <div className={Styles.linha}>
             <strong>Contato</strong>
