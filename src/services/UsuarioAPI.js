@@ -39,16 +39,15 @@ export default {
         }
     },
 
-    async logarAsync(email, senha)
+    async logarAsync(ehAdm, email, senha)
     {
         try{
             const usuarioLogar = {
+                ehAdmin: ehAdm,
                 email: email,
                 senha: senha,
             };
-            console.log("req", usuarioLogar);
             const response = await HTTPClient.post("/Usuario/Login", usuarioLogar)
-            console.log("response", response.data);
             return response.data;
         }catch (error) {
             console.error("Erro ao autenticar usuario", error);

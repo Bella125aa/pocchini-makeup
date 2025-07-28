@@ -16,6 +16,12 @@
   margin-bottom: 40px;
 }
 
+.containerCards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .card {
   background-color: white;
   padding: 30px;
@@ -75,6 +81,14 @@
   color: #0ba550;
 }
 
+.statusSelect {
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  color: #333;
+  padding: 4px 8px;
+}
+
 .botaoVer {
   font-size: 0.9rem;
   border: 1px solid #e0e0e0;
@@ -83,3 +97,4 @@
   align-items: center;
   gap: 5px;
 }
+

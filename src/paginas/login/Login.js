@@ -26,8 +26,8 @@ function Login() {
     }
 
     try{
-      const dadosUsuario = isAdmin ? await UsuarioAPI.logarAdmAsync(email, senha)
-                                   : await UsuarioAPI.logarAsync(email, senha);
+      const dadosUsuario = isAdmin ? await UsuarioAPI.logarAsync(true, email, senha)
+                                   : await UsuarioAPI.logarAsync(false, email, senha);
       login({ ...dadosUsuario, isAdmin});
 
       alert("Login realizado com sucesso!")

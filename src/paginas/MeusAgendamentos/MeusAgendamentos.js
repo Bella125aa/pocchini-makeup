@@ -8,7 +8,7 @@ import AgendamentoAPI from '../../services/AgendamentoAPI.js';
 import { useAuth } from '../../Componentes/Contexts/AuthContext.js';
 
 export function MeusAgendamentos() {
-  const {usuario} = useAuth();
+  const { usuario } = useAuth();
   const [selecionado, setSelecionado] = useState(null);
   const [statusSelecionado, setStatusSelecionado] = useState("");
   const [agendamentos, setAgendamentos] = useState([]);
@@ -28,7 +28,7 @@ export function MeusAgendamentos() {
       if (usuario.isAdmin) {
         listaAgendamentos = await AgendamentoAPI.listarPorStatusAsync(statusCodigo);
       } else {
-        listaAgendamentos = await AgendamentoAPI.listarPorUsuarioEStatusAsync(usuario.id, statusCodigo);
+        listaAgendamentos = await AgendamentoAPI.listarPorUsuarioAsync(usuario.id, statusCodigo);
       }
 
       const listaConvertida = listaAgendamentos.map(item => ({
@@ -112,8 +112,9 @@ export function MeusAgendamentos() {
       </div>
 
       {selecionado && (
-        <div className={Styles.cardDetalhes}>
+        <div className={Styles.card}>
           <h4 className={Styles.cardTitulo}>Detalhes</h4>
+          <p className={Styles.cardSubtitulo}>Informações do agendamento selecionado</p>
 
           <div className={Styles.linha}>
             <strong>Serviço</strong>
@@ -138,9 +139,7 @@ export function MeusAgendamentos() {
             </span>
           </div>
 
-
           <hr />
-
 
           <div className={Styles.linha}>
             <strong>Contato</strong>
@@ -149,6 +148,7 @@ export function MeusAgendamentos() {
           </div>
         </div>
       )}
+
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../Componentes/Contexts/AuthContext';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import Styles from './Agendamento.module.css';
 import AgendamentoAPI from '../../services/AgendamentoAPI';
@@ -11,6 +12,7 @@ export function Agendamento() {
   const [diasIndisponiveis, setDiasIndisponiveis] = useState([]);
   const [horariosDisponiveis, setHorariosDisponiveis] = useState([]);
   const [dataSelecionada, setDataSelecionada] = useState("");
+  const { usuario } = useAuth();
 
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -27,6 +29,7 @@ export function Agendamento() {
     }
 
     carregar();
+    console.log(usuario);
   }, []);
 
   useEffect(() => {
@@ -99,7 +102,7 @@ export function Agendamento() {
 
 
     try {
-      await AgendamentoAPI.criarAsync(isoStringComTimezoneCorreto, nome, email, telefone, tipoMaquiagem, local);
+      await AgendamentoAPI.criarAsync(isoStringComTimezoneCorreto, nome, email, telefone, tipoMaquiagem, local, usuario?.id);
       alert("Agendamento realizado com sucesso!");
       window.location.reload();
 

@@ -1,5 +1,5 @@
 import { Form, Button, Container, Card, } from 'react-bootstrap';
-import { BsBoxArrowInRight, BsEye } from 'react-icons/bs';
+import { BsBoxArrowInRight, BsEye, BsEyeSlash  } from 'react-icons/bs';
 import Styles from './Cadastro.module.css';
 import { Link } from 'react-router-dom';
 import { RiUserHeartLine } from "react-icons/ri";
@@ -12,6 +12,7 @@ function Cadastro() {
 const [nome, setNome] = useState("");
 const [email, setEmail] = useState("");
 const [senha, setSenha] = useState("");
+const [mostrarSenha, setMostrarSenha] = useState(false);
 const navigate = useNavigate();
 
 async function handleCadastro(e){
@@ -56,11 +57,17 @@ async function handleCadastro(e){
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formSenha">
-              <Form.Label>Senha</Form.Label>
-              <div className="position-relative">
-                <Form.Control type="password" value={senha} onChange= {(s) => setSenha(s.target.value)} />
-                <BsEye className={Styles.eye_icon} />
-              </div>
+                          <Form.Label>Senha</Form.Label>
+                          <div className="position-relative">
+                            <Form.Control 
+                              type={mostrarSenha ? 'text' : 'password'}
+                              value={senha} 
+                              onChange={(s) => setSenha(s.target.value)} 
+                            />
+                              {mostrarSenha ? (<BsEyeSlash onClick={() => setMostrarSenha(false)} className={Styles.eye_icon}/>)
+                                            : (<BsEye onClick={() => setMostrarSenha(true)} className={Styles.eye_icon}/>)
+                              }                     
+                          </div>
             </Form.Group>
 
             <Button type="submit" className={`w-100 ${Styles.custom_button}`}>
