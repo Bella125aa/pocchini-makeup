@@ -8,6 +8,7 @@ import { BsCalendarHeart } from "react-icons/bs";
 import { BsHearts } from "react-icons/bs";
 import BotaoSair from '../SairComponent';
 import { BsCalendarHeartFill } from "react-icons/bs";
+import { PiHandHeartBold } from "react-icons/pi";
 
 function NavbarComponent() {
   return (
@@ -35,6 +36,10 @@ function NavbarComponent() {
             <Nav.Link as={Link} to="/sobre" className={styles['nav_link']}>
               <BsSearchHeart style={{ marginRight: '8px', fontSize: '1.5rem' }} />
               Sobre Mim
+            </Nav.Link>
+            <Nav.Link as={Link} to="/assistente" className={styles['nav_link']} >
+              <PiHandHeartBold style={{ marginRight: '8px', fontSize: '1.5rem' }} />
+              Assistente IA
             </Nav.Link>
             {/* Botao Sair */}
             <BotaoSair />

@@ -12,6 +12,8 @@ export function MeusAgendamentos() {
   const [selecionado, setSelecionado] = useState(null);
   const [statusSelecionado, setStatusSelecionado] = useState("");
   const [agendamentos, setAgendamentos] = useState([]);
+  const [novoStatus, setNovoStatus] = useState("");
+  const [atualizando, setAtualizando] = useState(false);
 
   const statusAgendamento = {
     "Marcado": 0,
@@ -42,6 +44,26 @@ export function MeusAgendamentos() {
     }
 
   }
+
+  async function alterarStatusAgendamento() {
+    if (!selecionado || !novoStatus) return;
+
+    try {
+      setAtualizando(true);
+      console.log("Novo status selecionado:", novoStatus);
+
+      await AgendamentoAPI.atualizarAsync(selecionado.id, novoStatus);
+
+      await carregarAgendamentos(statusSelecionado);
+      setSelecionado(null);
+      setNovoStatus("");
+    } catch (error) {
+      console.error("Erro ao alterar status do agendamento:", error);
+    } finally {
+      setAtualizando(false);
+    }
+  }
+
 
   useEffect(() => {
     const executar = async () => {
@@ -99,7 +121,7 @@ export function MeusAgendamentos() {
                 <td>
                   <Button
                     variant="light"
-                    className={Styles.botaoVer}
+                    className={Styles.botaoVerr}
                     onClick={() => setSelecionado(item)}
                   >
                     <BsEye /> Ver
@@ -138,17 +160,40 @@ export function MeusAgendamentos() {
               {selecionado.status}
             </span>
           </div>
-
           <hr />
-
           <div className={Styles.linha}>
             <strong>Contato</strong>
             <p><BsTelephone className={Styles.icone} /> {selecionado.telefone}</p>
             <p><BsEnvelope className={Styles.icone} /> {selecionado.email}</p>
           </div>
+          <div className={Styles.linha}>
+            <strong>Alterar Status</strong>
+            <Form.Select
+              value={novoStatus}
+              onChange={(e) => setNovoStatus(e.target.value)}
+            >
+              <option value="">Selecione um novo status</option>
+              {["Marcado", "Cancelado", "Concluído"]
+                .filter(opcao =>
+                  opcao !== selecionado.status && 
+                  !(selecionado.status !== "Marcado" && opcao === "Marcado") 
+                )
+                .map(opcao => (
+                  <option key={opcao} value={opcao}>{opcao}</option>
+                ))}
+            </Form.Select>
+
+            <Button
+              className="mt-2"
+              variant="primary"
+              onClick={alterarStatusAgendamento}
+              disabled={!novoStatus || atualizando}
+            >
+              {atualizando ? "Atualizando..." : "Confirmar Alteração"}
+            </Button>
+          </div>
         </div>
       )}
-
     </div>
   );
 }

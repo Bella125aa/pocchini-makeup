@@ -86,7 +86,7 @@
   gap: 16px;
 }
 
-.botaoprimario {
+.botaoprimarioo {
   background-color: #b9815d;
   color: white;
   font-weight: bold;
@@ -95,7 +95,7 @@
   border-radius: 6px;
 }
 
-.botaoprimario:hover {
+.botaoprimarioo:hover {
   background-color: #a46b4c;
 }
 

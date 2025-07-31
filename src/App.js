@@ -8,6 +8,7 @@ import Login from './paginas/login/Login';
 import './App.css';
 import Cadastro from './paginas/Cadastro/Cadastro';
 import MeusAgendamentos from './paginas/MeusAgendamentos/MeusAgendamentos';
+import ChatIA from './paginas/PaginaIA/paginaIA';
 
 function AppContent() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function AppContent() {
         <Route path="*" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/meusagendamentos" element={<MeusAgendamentos />} />
+        <Route path="/assistente" element={<ChatIA/>} />
       </Routes>
     </>
   );

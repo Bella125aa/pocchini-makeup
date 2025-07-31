@@ -206,7 +206,7 @@ export function Agendamento() {
                     <Form.Control type="text" placeholder="Endereço onde será realizada a maquiagem" />
                   </Form.Group>
 
-                  <Button className={Styles.botaoAgendar} onClick={confirmarAgendamento}>
+                  <Button className={Styles.botaoAgendarr} onClick={confirmarAgendamento}>
                     Confirmar Agendamento
                   </Button>
                 </Form>
