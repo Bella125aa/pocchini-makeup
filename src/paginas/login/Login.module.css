@@ -35,17 +35,17 @@
   color: #555;
 }
 
-.custom_buttonnn {
-  background-color: #b98050;
-  border: none;
-  color: white;
-  font-weight: 600;
-  padding: 10px 0;
-  border-radius: 8px;
+.custom_buttonn {
+  background-color: #b98050 !important;
+  border: none !important;;
+  color: white !important;;
+  font-weight: 600 !important;;
+  padding: 10px 0 !important;;
+  border-radius: 8px !important;;
 }
 
-.custom_buttonnn:hover {
-  background-color: #a76d44;
+.custom_buttonn:hover {
+  background-color: #a76d44 !important;;
 }
 
 .forgot_link {

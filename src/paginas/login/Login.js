@@ -78,7 +78,7 @@ function Login() {
               className='mb-3'
             />
 
-            <Button type="submit" className={`w-100 ${Styles.custom_buttonnn}`}>
+            <Button type="submit" className={`w-100 ${Styles.custom_buttonn}`}>
               <BsBoxArrowInRight className="me-2" />
               Entrar
             </Button>

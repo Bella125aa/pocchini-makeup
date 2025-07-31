@@ -21,6 +21,11 @@ export function MeusAgendamentos() {
     "Concluído": 2,
   };
 
+  const statusAgendamentoSemMarcado = {
+    "Cancelado": 1,
+    "Concluído": 2,
+  };
+
   async function carregarAgendamentos(statusCodigo) {
     if (!usuario) return;
 
@@ -44,13 +49,16 @@ export function MeusAgendamentos() {
     }
 
   }
-
   async function alterarStatusAgendamento() {
     if (!selecionado || !novoStatus) return;
 
     try {
       setAtualizando(true);
-      console.log("Novo status selecionado:", novoStatus);
+
+      console.log("Tentando atualizar:", {
+        agendamentoId: selecionado.agendamentoId,
+        status: novoStatus
+      });
 
       await AgendamentoAPI.atualizarAsync(selecionado.id, novoStatus);
 
@@ -59,10 +67,12 @@ export function MeusAgendamentos() {
       setNovoStatus("");
     } catch (error) {
       console.error("Erro ao alterar status do agendamento:", error);
+      alert(error?.response?.data?.message || error.message);
     } finally {
       setAtualizando(false);
     }
   }
+
 
 
   useEffect(() => {
@@ -173,16 +183,12 @@ export function MeusAgendamentos() {
               onChange={(e) => setNovoStatus(e.target.value)}
             >
               <option value="">Selecione um novo status</option>
-              {["Marcado", "Cancelado", "Concluído"]
-                .filter(opcao =>
-                  opcao !== selecionado.status && 
-                  !(selecionado.status !== "Marcado" && opcao === "Marcado") 
-                )
-                .map(opcao => (
-                  <option key={opcao} value={opcao}>{opcao}</option>
+              {Object.entries(statusAgendamentoSemMarcado)
+                .filter(([label]) => label !== selecionado.status)
+                .map(([label, valor]) => (
+                  <option key={valor} value={Number(valor)}>{label}</option>
                 ))}
             </Form.Select>
-
             <Button
               className="mt-2"
               variant="primary"

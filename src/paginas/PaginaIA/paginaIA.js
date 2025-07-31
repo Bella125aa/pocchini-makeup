@@ -3,6 +3,7 @@ import { Container, Card, Form } from 'react-bootstrap';
 import './paginaIA.module.css';
 import { HiOutlineSparkles } from "react-icons/hi";
 import AIServiceAPI from "../../services/AIServiceAPI"
+import Style from './paginaIA.module.css';
 
 function ChatIA() {
     const [mensagem, setMensagem] = useState('');
@@ -25,26 +26,26 @@ function ChatIA() {
     };
 
     return (
-        <div className="chatia-bg py-5">
+        <div className={Style.chatiabg + "py-5"}>
             <Container className="text-center">
                 <h2 className="mb-2"> <HiOutlineSparkles /> Assistente IA</h2>
                 <p className="mb-4">
                     Converse com nossa assistente inteligente especializada em beleza e estética
                 </p>
 
-                <Card className="chatia-card mx-auto shadow-sm">
+                <Card className={Style.chatiacard + " mx-auto shadow-sm"}>
                     <Card.Body>
                         <h5 className="text-start"> <HiOutlineSparkles /> Chat com IA</h5>
                         <p className="text-start text-muted small mb-4">
                             Faça perguntas sobre procedimentos, cuidados ou agende seu atendimento
                         </p>
 
-                        <div className="chatia-empty mb-4">
+                        <div className={Style.chatiaempty + "mb-4"}>
                             {resposta ? (
                                 <p className="text-start text-muted">{resposta}</p>
                             ) : (
                                 <>
-                                    <div className="chatia-icon"><HiOutlineSparkles /></div>
+                                    <div className= {Style.chatiaicons}><HiOutlineSparkles /></div>
                                     <p className="text-muted">Inicie uma conversa com nossa IA especializada</p>
                                 </>
                             )}
@@ -58,7 +59,7 @@ function ChatIA() {
                                 value={mensagem}
                                 onChange={(e) => setMensagem(e.target.value)}
                             />
-                            <button type="submit" className="botaoprimarioo">
+                            <button type="submit" className={Style.botaoprimarioo}>
                                 Enviar
                             </button>
                         </Form>

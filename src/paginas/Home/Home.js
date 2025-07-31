@@ -18,7 +18,7 @@ function SobreMim() {
                         do casual ao dia mais especial da sua vida.
                     </p>
                     <div className={styles.botoess}>
-                        <Button className={styles.botaoprimarioo} as={Link} to="/agendamento"  >Agendar Agora</Button>
+                        <Button className={styles.botaoprimario} as={Link} to="/agendamento"  >Agendar Agora</Button>
                         <Button variant="outline" className={styles.botaosecundario} as={Link} to="/sobre" >Conhecer Juliana</Button>
                     </div>
                 </Container>

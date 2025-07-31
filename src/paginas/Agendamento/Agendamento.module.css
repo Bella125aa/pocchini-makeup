@@ -39,18 +39,18 @@
 }
 
 .botaoAgendarr {
-  width: 100%;
-  background-color: #c68b60;
-  border: none;
-  padding: 12px;
-  font-weight: bold;
-  color: white;
-  border-radius: 8px;
-  transition: 0.3s;
+  width: 100% !important;;
+  background-color: #c68b60 !important;;
+  border: none !important;;
+  padding: 12px !important;;
+  font-weight: bold !important;;
+  color: white !important;;
+  border-radius: 8px !important;;
+  transition: 0.3s !important;;
 }
 
 .botaoAgendarr:hover {
-  background-color: #a86a3d;
+  background-color: #a86a3d !important;;
 }
 
 .cardServicos {

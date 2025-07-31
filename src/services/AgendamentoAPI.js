@@ -65,10 +65,11 @@ export default {
     },
 
     async atualizarAsync(agendamentoId, status) {
+        
         try {            
             const agendamentoAtualizar = {
                 agendamentoId: agendamentoId,
-                status: status,
+                status: Number(status),
             };
 
             console.log("req", agendamentoAtualizar)

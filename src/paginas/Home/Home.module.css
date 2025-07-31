@@ -44,18 +44,18 @@
 }
 
 .botaoAgendar {
-  background-color: #fff6f0;
-  color: #b9815d;
-  font-weight: bold;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  background-color: #fff6f0 !important;
+  color: #b9815d !important;
+  font-weight: bold !important;
+  border: none !important;
+  padding: 12px 25px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
 }
 
 .botaoAgendar:hover {
-  background-color: #fce4d6;
-  color: #a56b4d;
+  background-color: #fce4d6 !important;
+  color: #a56b4d !important;
 }
 
 .hero {
@@ -81,37 +81,37 @@
 }
 
 .botoess {
-  display: flex;
+  display: flex ;
   justify-content: center;
   gap: 16px;
 }
 
-.botaoprimarioo {
-  background-color: #b9815d;
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 6px;
+.botaoprimario {
+  background-color: #b9815d !important;
+  color: white !important;
+  font-weight: bold !important;
+  border: none !important;
+  padding: 10px 24px !important;
+  border-radius: 6px !important;
 }
 
-.botaoprimarioo:hover {
-  background-color: #a46b4c;
+.botaoprimario:hover {
+  background-color: #a46b4c !important;
 }
 
 .botaosecundario {
-  color: #b9815d;
-  font-weight: bold;
-  border: 1px solid #b9815d;
-  padding: 10px 24px;
-  border-radius: 6px;
-  background-color: transparent;
+  color: #b9815d !important;
+  font-weight: bold !important;
+  border: 1px solid #b9815d !important;
+  padding: 10px 24px !important;
+  border-radius: 6px !important;
+  background-color: transparent !important;
 }
 
 .botaosecundario:hover {
-  background-color: #fcefe7;
-  color: #a46b4c;
-  border-color: #a46b4c;
+  background-color: #fcefe7 !important;
+  color: #a46b4c !important;
+  border-color: #a46b4c !important;
 }
 
 .servicosSection {
@@ -184,14 +184,14 @@
 }
 
 .agendarBtn {
-  background-color: #f7a5bb;
-  border: none;
-  color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
- transition: background 0.3s;
+  background-color: #f7a5bb !important;
+  border: none !important;
+  color: white !important;
+  font-weight: bold !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+ transition: background 0.3s !important;
 }
 .agendarBtn:hover {
-  background-color: #eda3b5;
+  background-color: #eda3b5 !important;
 }

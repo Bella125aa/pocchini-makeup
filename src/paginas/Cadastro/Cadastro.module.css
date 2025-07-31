@@ -1,5 +1,5 @@
 .cadastro_page {
-  background: #fffbe6;
+  background: #fffbe6 !important;;
 }
 
 .icon_top {
@@ -36,16 +36,16 @@
 }
 
 .custom_button {
-  background-color: #b98050;
-  border: none;
-  color: white;
-  font-weight: 600;
-  padding: 10px 0;
-  border-radius: 8px;
+  background-color: #b98050 !important;;
+  border: none !important;;
+  color: white !important;;
+  font-weight: 600 !important;;
+  padding: 10px 0 !important;;
+  border-radius: 8px !important;;
 }
 
 .custom_button:hover {
-  background-color: #a76d44;
+  background-color: #a76d44 !important;;
 }
 
 .forgot_link {
