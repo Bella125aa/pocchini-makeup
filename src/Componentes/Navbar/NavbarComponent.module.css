@@ -10,8 +10,8 @@
 .navbar_custom .navbar_brand {
   color: #B88156; 
   font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
+  font-size: 1.7em;
+  letter-spacing: 0.7px;
   transition: color 0.3s ease;
 }
 
@@ -22,8 +22,8 @@
 
 .navbar_custom .nav_link {
   color: #B88156;
-  margin-left: 2rem;
-  font-size: 0.8rem;
+  margin-left: 1rem;
+  font-size: 0.7rem;
   font-weight: 500;
   transition: color 0.3s ease;
 }

@@ -176,28 +176,36 @@ export function MeusAgendamentos() {
             <p><BsTelephone className={Styles.icone} /> {selecionado.telefone}</p>
             <p><BsEnvelope className={Styles.icone} /> {selecionado.email}</p>
           </div>
-          <div className={Styles.linha}>
-            <strong>Alterar Status</strong>
-            <Form.Select
-              value={novoStatus}
-              onChange={(e) => setNovoStatus(e.target.value)}
-            >
-              <option value="">Selecione um novo status</option>
-              {Object.entries(statusAgendamentoSemMarcado)
-                .filter(([label]) => label !== selecionado.status)
-                .map(([label, valor]) => (
-                  <option key={valor} value={Number(valor)}>{label}</option>
-                ))}
-            </Form.Select>
-            <Button
-              className="mt-2"
-              variant="primary"
-              onClick={alterarStatusAgendamento}
-              disabled={!novoStatus || atualizando}
-            >
-              {atualizando ? "Atualizando..." : "Confirmar Alteração"}
-            </Button>
-          </div>
+          {usuario?.isAdmin &&
+            statusAgendamentoSemMarcado &&
+            selecionado?.status && (
+              <>
+                <strong>Alterar Status</strong>
+                <Form.Select
+                  value={novoStatus}
+                  onChange={(e) => setNovoStatus(e.target.value)}
+                >
+                  <option value="">Selecione um novo status</option>
+                  {Object.entries(statusAgendamentoSemMarcado)
+                    .filter(([label]) => label !== selecionado.status)
+                    .map(([label, valor]) => (
+                      <option key={valor} value={Number(valor)}>{label}</option>
+                    ))}
+                </Form.Select>
+
+                <div>
+                  <Button
+                    className={`${Styles.botaoConfirmar} mt-2`}
+                    onClick={alterarStatusAgendamento}
+                    disabled={!novoStatus || atualizando}
+                  >
+                    {atualizando ? "Atualizando..." : "Confirmar Alteração"}
+                  </Button>
+                </div>
+              </>
+            )}
+
+
         </div>
       )}
     </div>

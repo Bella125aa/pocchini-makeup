@@ -98,4 +98,20 @@
   gap: 5px ;
 }
 
+.botaoConfirmar {
+  background-color: #b98050 !important; 
+  color: white !important; 
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.botaoConfirmar:hover {
+  background-color: #a56f48 !important; 
+  cursor: pointer !important;
+}
+
+
 
