@@ -218,9 +218,9 @@ export function Agendamento() {
             <Card className={Styles.cardServicos}>
               <Card.Body>
                 <Card.Title className={Styles.cardTituloLateral}>Nossos Serviços</Card.Title>
-                <div className={Styles.servicoItem}><strong>Casual</strong><span>R$ 80</span></div>
-                <div className={Styles.servicoItem}><strong>Formal</strong><span>R$ 120</span></div>
-                <div className={Styles.servicoItem}><strong>Noiva</strong><span>R$ 250</span></div>
+                <div className={Styles.servicoItem}><strong>Casual</strong><span>R$ 150</span></div>
+                <div className={Styles.servicoItem}><strong>Formal</strong><span>R$ 250</span></div>
+                <div className={Styles.servicoItem}><strong>Noiva</strong><span>R$ 500</span></div>
               </Card.Body>
             </Card>
 
